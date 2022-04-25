@@ -3,7 +3,7 @@ The function should take two parameters - the playerSelection and
 return and then return a string that declares the winner of 
 the round like so: "You Lose! Paper beats Rock" */
 
-let playerSelection = window.prompt("Selection: ")
+const playerSelection = window.prompt("Selection: ")
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -26,10 +26,10 @@ function compSelection() {
 function playRound(playerSelection, computerSelection) {
     console.log(`you play: ${playerSelection.toLowerCase()} 
 computer plays: ${computerSelection.toLowerCase()}`);
-    let player = playerSelection.toLowerCase();
-    let computer = computerSelection.toLowerCase();
-    let playerWins = 'you win';
-    let playerLoses = 'you lose';
+    const player = playerSelection.toLowerCase();
+    const computer = computerSelection.toLowerCase();
+    const playerWins = 'you win';
+    const playerLoses = 'you lose';
     while (true) {
         if (player == 'rock' && computer == 'scissor') {
             console.log(playerWins);
