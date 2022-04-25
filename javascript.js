@@ -26,9 +26,10 @@ const PLAYER_TIES = 'Tie';
 
 
 function playRound(playerSelection, computerSelection) {
-
-  const player = playerSelection.toLowerCase();
-  const computer = computerSelection.toLowerCase();
+  
+  
+  const player = playerSelection.toLowerCase(); // Case insensitive string comparison
+  const computer = computerSelection.toLowerCase(); // Case insensitive string comparison
 
   console.log(`you play: ${playerSelection.toLowerCase()} 
 computer plays: ${computerSelection.toLowerCase()}`);
@@ -55,7 +56,7 @@ reports a gameOutcome or loser at the end. */
 
 
 function game() {
-  let roundNum = 0;
+  let roundNum = 0; // Variable to store the ith round of the game
   let playerWinsCount = 0;
   let cpuWinsCount = 0;
   for (i = 1; i <= 5; i++) {
