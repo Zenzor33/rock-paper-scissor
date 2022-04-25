@@ -17,7 +17,7 @@ function compSelection() {
 
   if (randomNumber === 0) return 'Rock';
   if (randomNumber === 1) return 'Paper';
-  if (randomNumber === 2) return 'Scissor';
+  return 'Scissor';
 }
 
 const PLAYER_WINS = 'you win';
