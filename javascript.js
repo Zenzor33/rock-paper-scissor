@@ -20,10 +20,10 @@ function compSelection() {
   if (randomNumber === 2) return 'Scissor';
 }
 
-const playerWins = 'you win';
-const playerLoses = 'you lose';
-const playerTies = 'Tie';
-let gameOutcome = undefined;
+const PLAYER_WINS = 'you win';
+const PLAYER_LOSES = 'you lose';
+const PLAYER_TIES = 'Tie';
+
 
 function playRound(playerSelection, computerSelection) {
 
@@ -36,16 +36,16 @@ computer plays: ${computerSelection.toLowerCase()}`);
   if ((player == 'rock' && computer == 'scissor') ||
     (player == 'paper' && computer == 'rock') ||
     (player == 'scissor' && computer == 'paper')) {
-    console.log(playerWins);
-    return gameOutcome = playerWins;
+    console.log(PLAYER_WINS);
+    return gameOutcome = PLAYER_WINS;
   }
   else if (player == computer) {
-    console.log(playerTies);
-    return gameOutcome = playerTies;
+    console.log(PLAYER_TIES);
+    return gameOutcome = PLAYER_TIES;
   }
   else {
-    console.log(playerLoses);
-    return gameOutcome = playerLoses;
+    console.log(PLAYER_LOSES);
+    return gameOutcome = PLAYER_LOSES;
   }
 }
 
@@ -61,9 +61,9 @@ function game() {
   for (i = 1; i <= 5; i++) {
     playRound(playerSelection(), compSelection());
     roundNum += 1;
-    if (gameOutcome === playerWins) {
+    if (gameOutcome === PLAYER_WINS) {
       playerWinsCount += 1;
-    } else if (gameOutcome === playerTies) {
+    } else if (gameOutcome === PLAYER_TIES) {
     }
     else {
       cpuWinsCount += 1;
