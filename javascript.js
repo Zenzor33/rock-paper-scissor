@@ -7,7 +7,7 @@ const playerSelection = window.prompt("Selection: ")
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
-  }
+}
 
 function compSelection() {
     const compRNG = getRandomInt(3); // random int between 0 & 2
@@ -18,7 +18,7 @@ function compSelection() {
     if (compRNG == 1) {
         return 'Paper';
     }
-    if (compRNG == 2 ) {
+    if (compRNG == 2) {
         return 'Scissor';
     }
 }
@@ -50,9 +50,9 @@ computer plays: ${computerSelection.toLowerCase()}`);
         else {
             console.log(playerLoses);
             break;
+        }
     }
-    }
-    }
+}
 
 playRound(playerSelection, compSelection());
 
