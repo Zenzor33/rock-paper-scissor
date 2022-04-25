@@ -31,19 +31,13 @@ computer plays: ${computerSelection.toLowerCase()}`);
     const playerWins = 'you win';
     const playerLoses = 'you lose';
     while (true) {
-        if (player == 'rock' && computer == 'scissor') {
+        if ((player == 'rock' && computer == 'scissor') ||
+            (player == 'paper' && computer == 'rock') ||
+            (player == 'scissor' && computer == 'paper')) {
             console.log(playerWins);
             break;
         }
-        if (player == 'paper' && computer == 'rock') {
-            console.log(playerWins);
-            break;
-        }
-        if (player == 'scissor' && computer == 'paper') {
-            console.log(playerWins);
-            break;
-        }
-        if (player == computer) {
+        else if (player == computer) {
             console.log('Tie');
             break;
         }
