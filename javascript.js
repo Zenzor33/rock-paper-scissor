@@ -33,9 +33,9 @@ function playRound(playerSelection, computerSelection) {
   console.log(`you play: ${playerSelection.toLowerCase()} 
 computer plays: ${computerSelection.toLowerCase()}`);
 
-  if ((player == 'rock' && computer == 'scissor') ||
-    (player == 'paper' && computer == 'rock') ||
-    (player == 'scissor' && computer == 'paper')) {
+  if ((player === 'rock' && computer === 'scissor') ||
+    (player === 'paper' && computer === 'rock') ||
+    (player === 'scissor' && computer === 'paper')) {
     console.log(PLAYER_WINS);
     return gameOutcome = PLAYER_WINS;
   }
@@ -61,14 +61,9 @@ function game() {
   for (i = 1; i <= 5; i++) {
     playRound(playerSelection(), compSelection());
     roundNum += 1;
-    if (gameOutcome === PLAYER_WINS) {
-      playerWinsCount += 1;
-    } else if (gameOutcome === PLAYER_TIES) {
-    }
-    else {
-      cpuWinsCount += 1;
-    }
-    gameOutcome = undefined;
+    if (gameOutcome === PLAYER_WINS) playerWinsCount += 1;
+    else if (gameOutcome === PLAYER_TIES);
+    else cpuWinsCount += 1;
   }
 
 
