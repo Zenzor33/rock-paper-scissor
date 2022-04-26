@@ -17,12 +17,13 @@ inside of this one to play a 5 round game that keeps score and
 reports a gameOutcome or loser at the end. */
 
 function playRound(playerSelection, computerSelection) {
+
   if ((playerSelection === 'rock' && computerSelection === 'scissor') ||
     (playerSelection === 'paper' && computerSelection === 'rock') ||
     (playerSelection === 'scissor' && computerSelection === 'paper')) {
     return ROUND_OUTCOME_WIN;
   }
-  else if (playerSelection == computerSelection) {
+  else if (playerSelection === computerSelection) {
     return ROUND_OUTCOME_TIE;
   }
   else {
@@ -31,6 +32,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function computerPlay() {
+  
   let randomInt = Math.floor(Math.random() * 3); // random number between 0 and 2
 
   switch (randomInt) {
