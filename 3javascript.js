@@ -39,24 +39,8 @@ game(numberOfRounds) -- plays numberOfRounds rounds of RPS.
  clicked. (you can keep the console.logs for this step)
 */
 
-// let btnPlayerSelection = document.getElementById('rock');
-// btnPlayerSelection.addEventListener('click', test);
-
 let btnList = document.getElementById('main');
-// add an event listener to btnList
 btnList.addEventListener('click', playRound);
-
-// function temp(e) {
-//   e.preventDefault();
-//   let buttonClicked = e.target.id;
-//   let buttonClickedText = e.target.textContent.toLowerCase();
-//   // filter for clicks on a button
-//   if (buttonClicked === buttonClickedText) {
-//     // console.log(`${buttonClicked} same  ${buttonClickedText}`);
-//   } else {
-//     // console.log('else');
-//   }
-// }
 
 function getRandomInteger() {
   return Math.floor(Math.random() * 3)
