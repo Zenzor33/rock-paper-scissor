@@ -37,10 +37,23 @@ game(numberOfRounds) -- plays numberOfRounds rounds of RPS.
  Add an event listener to the buttons that call your playRound 
  function with the correct playerSelection every time a button is 
  clicked. (you can keep the console.logs for this step)
+
+ Display the running score, and announce a winner of the game once 
+ one player reaches 5 points.
+  1. Create global variables for:
+  player_win_tally
+  computer_win_tally
+  tie_tally
+
+  2. Add logic to new function updateGameScore(winner)
+
+  3. Display the running score in a div
 */
 
 let btnList = document.getElementById('main');
 btnList.addEventListener('click', playRound);
+let resultsDiv = document.createElement('div');
+btnList.appendChild(resultsDiv);
 
 function getRandomInteger() {
   return Math.floor(Math.random() * 3)
@@ -60,43 +73,98 @@ function getComputerSelection() {
 }
 
 function getPlayerSelection(e) {
-  e.preventDefault();
   let buttonClicked = e.target.id;
   let buttonClickedTextContent = e.target.textContent.toLowerCase();
   // filter for clicks on a button
   if (buttonClicked === buttonClickedTextContent) {
-    // console.log(`${buttonClicked} same  ${buttonClickedText}`);
     return buttonClickedTextContent;
-  } else {
-    // console.log('else');
+  } else {;
     return 'error';
   }
 }
 
+let player_win_tally = 0;
+let computer_win_tally = 0;
+let tie_tally = 0;
 function playRound(e) {
+  e.preventDefault();
   const computerSelection = getComputerSelection();
   const playerSelection = getPlayerSelection(e);
-  // console.log(`player plays ${playerSelection} vs ${computerSelection}`)
 
   if (playerSelection === 'rock' && computerSelection === 'scissor' || 
      playerSelection === 'paper' && computerSelection === 'rock' ||
      playerSelection === 'scissor' && computerSelection === 'paper') {
-       console.log('player_wins');
+       console.log(`Player wins! Player: ${playerSelection} vs Computer: ${computerSelection}`);
+       updateGameScore('player_wins');
        return 'player_wins';
      } 
      else if (playerSelection === computerSelection) {
-      console.log('tie');
+      console.log(`Tie: Player ${playerSelection} vs Computer: ${computerSelection}`);
+      updateGameScore('tie');
        return 'tie';
      } else {
-      console.log('computer_wins');
+      console.log(`Player loses: Player ${playerSelection} vs Computer: ${computerSelection}`);
+      updateGameScore('computer_wins');
        return 'computer_wins';
      }
 }
 
+function updateGameScore(outcome) {
+  let strPlayerWinsMatch = `Player wins match ${player_win_tally} to ${computer_win_tally}`;
+  let strComputerWinsMatch = `Computer wins match ${computer_win_tally} to ${player_win_tally}`;
+  // Announce winner if one score is already 5
+  if (player_win_tally === 5) {
+    console.log(strPlayerWinsMatch);
+    return
+  }
+  if (computer_win_tally === 5) {
+    console.log(strComputerWinsMatch);
+    return
+  }
+
+
+  // Increment outcome & announce winner if score reaches 5
+  if (outcome === 'player_wins') {
+    player_win_tally++;
+    updateHTML();
+    if (player_win_tally === 5) {
+      console.log(strPlayerWinsMatch);
+    }
+  } else if (outcome === 'tie') {
+    tie_tally++;
+    updateHTML();
+  } else if (outcome === 'computer_wins') {
+    computer_win_tally++;
+    updateHTML();
+    if (computer_win_tally === 5) {
+      console.log(strComputerWinsMatch);
+    }
+  } else {
+    console.log(`ERROR: updateGameScore() invalid input`);
+  }
+}
+
+function getResults(str) {
+  if (str === 'player') {
+    console.log(player_win_tally);
+    return player_win_tally;
+  } else if (str === 'computer') {
+    return computer_win_tally;
+  } else {
+    console.log('getResults() invalid parameter');
+    return 'error';
+  }
+}
+
+function updateHTML() {
+  resultsDiv.classList = 'results';
+  resultsDiv.textContent = `player wins: ${getResults('player')} computer wins: ${getResults('computer')}`;
+}
+
 // function game(numberOfRounds) {
-//   let player_win_tally = 0;
-//   let computer_win_tally = 0;
-//   let tie_tally = 0;
+  // let player_win_tally = 0;
+  // let computer_win_tally = 0;
+  // let tie_tally = 0;
 
 //   for (let i = 0; i < numberOfRounds; i++) {
 //     let round_outcome = playRound();
