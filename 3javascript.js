@@ -87,27 +87,31 @@ function playRound(e) {
   }
 
   e.preventDefault();
+
   const computerSelection = getComputerSelection();
   const playerSelection = getPlayerSelection(e);
 
-  let outcome;
+  let outcome = getGameOutcome(playerSelection, computerSelection);
+  updateGameScore(outcome);
+  updateHTML();
+  return outcome;
+}
 
-  if (playerSelection === 'rock' && computerSelection === 'scissor' || 
-     playerSelection === 'paper' && computerSelection === 'rock' ||
-     playerSelection === 'scissor' && computerSelection === 'paper') {
-       console.log(`Player wins! Player: ${playerSelection} vs Computer: ${computerSelection}`);
-       outcome = 'player_wins';
-     } 
-     else if (playerSelection === computerSelection) {
-      console.log(`Tie: Player ${playerSelection} vs Computer: ${computerSelection}`);
-      outcome = 'tie';
-     } else {
-      console.log(`Player loses: Player ${playerSelection} vs Computer: ${computerSelection}`);
-      outcome = 'computer_wins';
-     }
-
-     updateGameScore(outcome);
-     return outcome;
+function getGameOutcome(playerSelection, computerSelection) {
+  if (playerSelection === 'rock' && computerSelection === 'scissor' ||
+    playerSelection === 'paper' && computerSelection === 'rock' ||
+    playerSelection === 'scissor' && computerSelection === 'paper') {
+    
+    console.log(`Player wins! Player: ${playerSelection} vs Computer: ${computerSelection}`);
+    return 'player_wins';
+  }
+  else if (playerSelection === computerSelection) {
+    console.log(`Tie: Player ${playerSelection} vs Computer: ${computerSelection}`);
+    return 'tie';
+  } else {
+    console.log(`Player loses: Player ${playerSelection} vs Computer: ${computerSelection}`);
+    return 'computer_wins';
+  }
 }
 
 function updateGameScore(outcome) {
@@ -140,8 +144,6 @@ function updateGameScore(outcome) {
   } else {
     console.log(`ERROR: updateGameScore() invalid input`);
   }
-
-  updateHTML();
 }
 
 function getResults(str) {
